@@ -1,4 +1,4 @@
-print("BLAZE!")
+--print("BLAZE!")
 
 require("config.lazy")
 
