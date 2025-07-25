@@ -31,8 +31,8 @@ K("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", opts) -- split screen vertically
 -- Resize buffer with arrows
 K("n", "<C-Up>", ":resize -2<CR>", opts) -- resize current active buffer 2 pixels to the top 
 K("n", "<C-Down>", ":resize +2<CR>", opts)-- resize current active buffer 2 pixels to the bottom
-K("n", "<C-Left>", ":vertical resize -2<CR>", opts)-- resize current active buffer 2 pixels to the left 
-K("n", "<C-Right>", ":vertical resize +2<CR>", opts)-- resize current active buffer 2 pixels to the right 
+K("n", "<C-Left>", ":vertical resize +2<CR>", opts)-- resize current active buffer 2 pixels to the left 
+K("n", "<C-Right>", ":vertical resize -2<CR>", opts)-- resize current active buffer 2 pixels to the right 
 
 -- ZZ to save and exit
 -- ZQ exit without saving
@@ -58,3 +58,6 @@ K("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts) -- Open grep ()
 
 -- Nvim Tree
 K("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- Toggle file explorer
+
+-- MISC
+K("n", "<leader>R", ":so %<CR>", opts)
