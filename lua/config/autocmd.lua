@@ -1,15 +1,3 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "yes"
-vim.opt.cmdheight = 1
-vim.o.showmode = false
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.tabstop = 2             -- How many spaces a tab counts for
-vim.opt.shiftwidth = 2          -- Size of an indent (>>, <<, auto-indent)
-vim.opt.expandtab = true        -- Convert tabs to spaces
-vim.g.barbar_auto_setup = false -- disable auto-setup
-
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -22,9 +10,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 
+-- Auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.lua", "*.py", "*.js", "*.ts" },
+  pattern = { "*.lua", "*.py", "*.js", "*.ts", "*.c", "*.cpp", "*.rs", "*.html", "*.css" },
   callback = function()
     vim.lsp.buf.format({ async = false })
+  end,
+})
+
+
+-- restore cursor pos on file open
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    local line = vim.fn.line("'\"")
+    if line > 1 and line <= vim.fn.line("$") then
+      vim.cmd("normal! g'\"")
+    end
   end,
 })

@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 local K = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-
 --[ Modes
 -- normal_mode = "n",
 -- insert_mode = "i",
@@ -13,8 +12,6 @@ local opts = { noremap = true, silent = true }
 -- visual_block_mode = "x",
 -- command_mode = "c",
 --]
-
-
 
 -- NORMAL MODE
 
@@ -69,14 +66,10 @@ K("n", "<leader>t", ":lua require('FTerm').open()<CR>", opts)             --open
 K("t", "<Esc>", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exit terminal with escape
 
 -- PLUGIN MAPS
-
--- Telescope
-K("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts) -- open telescope file finder
-K("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)  -- Open grep ()
-
 -- Nvim Tree
 K("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- Toggle file explorer
 
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
-K("v", "<leader>f", "=gv")             -- format/indent document
+K("n", "<leader>fm", "=gv")            -- format/indent document in normal mode
+K("v", "<leader>fm", "=gv")            -- format/indent document in visual mode
