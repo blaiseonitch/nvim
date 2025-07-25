@@ -29,8 +29,8 @@ K("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", opts) -- split screen vertically
 
 
 -- Resize buffer with arrows
-K("n", "<C-Up>", ":resize +2<CR>", opts) -- resize current active buffer 2 pixels to the top 
-K("n", "<C-Down>", ":resize -2<CR>", opts)-- resize current active buffer 2 pixels to the bottom
+K("n", "<C-Up>", ":resize -2<CR>", opts) -- resize current active buffer 2 pixels to the top 
+K("n", "<C-Down>", ":resize +2<CR>", opts)-- resize current active buffer 2 pixels to the bottom
 K("n", "<C-Left>", ":vertical resize -2<CR>", opts)-- resize current active buffer 2 pixels to the left 
 K("n", "<C-Right>", ":vertical resize +2<CR>", opts)-- resize current active buffer 2 pixels to the right 
 
