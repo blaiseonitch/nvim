@@ -1,5 +1,12 @@
 local K = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local fzf = require("fzf-lua")
+
+-- Find project root (parent directory containing .git)
+local function get_project_root()
+	local root = vim.fs.dirname(vim.fs.find('.git', { upward = true })[1])
+	return root or vim.loop.cwd()
+end
 
 --[ Modes
 -- normal_mode = "n",
@@ -69,10 +76,22 @@ K("t", "<Esc>", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exi
 -- Nvim Tree
 K("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- Toggle file explorer
 
--- FZF - LUA
-K("n", "<leader>ff", require("fzf-lua").files, { desc = "fzf files" })
-K("n", "<leader>fg", require("fzf-lua").live_grep, { desc = "fxf grep" })
-K("n", "<leader>fr", require("fzf-lua").resume, { desc = "fzf-recent" })
+
+-- FZF-LUA Mappings (ALL use project root)
+K("n", "<leader>ff", function()
+	fzf.files({ cwd = get_project_root() }) -- Files in project root
+end, { desc = "Files (Project)" })
+
+K("n", "<leader>gg", function()
+	fzf.live_grep({ cwd = get_project_root() }) -- Grep in project root
+end, { desc = "Words (Project)" })
+
+K("n", "<leader>fu", function()
+	fzf.grep({
+		search = vim.fn.expand('<cword>'),
+		cwd = get_project_root() -- Search word under cursor in project root
+	})
+end, { desc = "Word under cursor (Project)" })
 
 
 -- MISC
