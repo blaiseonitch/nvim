@@ -1,6 +1,3 @@
-vim.g.mapleader = " " -- set space as leader key
-vim.g.maplocalleader = " "
-
 local K = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -39,9 +36,8 @@ K("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
 K("n", "<A-0>", "<Cmd>BufferLast<CR>", opts) -- Last buffer
 
 -- Quick close/pin
-K("n", "<A-c>", "<Cmd>q<CR>", opts)         -- Close current buffer
-K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts) -- Pin/unpin buffer
-
+K("n", "<A-c>", "<Cmd>BufferClose<CR>", opts) -- Close current buffer
+K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)   -- Pin/unpin buffer
 
 -- Splitting screen
 K("n", "<leader>s", ":split<CR>:bnext<CR>", opts)   -- split screen horizontally
@@ -72,6 +68,11 @@ K("t", "<Esc>", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exi
 -- PLUGIN MAPS
 -- Nvim Tree
 K("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- Toggle file explorer
+
+-- FZF - LUA
+K("n", "<leader>ff", require("fzf-lua").files, { desc = "fzf files" })
+K("n", "<leader>fg", require("fzf-lua").live_grep, { desc = "fxf grep" })
+K("n", "<leader>fr", require("fzf-lua").resume, { desc = "fzf-recent" })
 
 
 -- MISC
