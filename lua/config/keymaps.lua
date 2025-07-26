@@ -69,8 +69,8 @@ K("i", "jj", "<Esc>", opts) -- exit insert mode with jj
 K("i", "JJ", "<Esc>", opts) -- exit insert mode with JJ
 
 -- TERMINAL MODE
-K("n", "<leader>t", ":lua require('FTerm').open()<CR>", opts)             --open terminal with space + t
-K("t", "<Esc>", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exit terminal with escape
+K("n", "<leader>t", ":lua require('FTerm').open()<CR>", opts)                  --open terminal with space + t
+K("t", "<leader>jj", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exit terminal with escape
 
 -- PLUGIN MAPS
 -- Nvim Tree
