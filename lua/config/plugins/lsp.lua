@@ -24,8 +24,7 @@ return {
 				settings = {
 					Lua = {
 						runtime = {
-							version = 'LuaJIT', -- for Neovim
-						},
+							version = 'LuaJIT', },
 						diagnostics = {
 							globals = { 'vim' }, -- stops "vim is undefined" errors
 						},
@@ -40,14 +39,28 @@ return {
 				}
 			})
 
+			local function get_vcpkg_includes()
+				local vcpkg_root = os.getenv("VCPKG_ROOT") or os.getenv("HOME") .. "/vcpkg"
+				local triplet = os.getenv("VCPKG_DEFAULT_TRIPLET") or "x64-linux"
+				return {
+					"-I" .. vcpkg_root .. "/installed/" .. triplet .. "/include",
+				}
+			end
+
 			lspconfig.clangd.setup({
-				capabilities = capabilities,
 				cmd = {
 					"clangd",
-					"--header-insertion=never",
-					"--",
-					"-I/home/blaze/vcpkg/installed/x64-linux/include",
+					"--background-index",
+					"--clang-tidy",
+					"--enable-config",
 				},
+				init_options = {
+					fallbackFlags = get_vcpkg_includes(),
+				},
+				capabilities = require("blink.cmp").get_lsp_capabilities(),
+				on_attach = function(client, bufnr)
+					-- optional keybinds
+				end,
 			})
 		end
 	}
