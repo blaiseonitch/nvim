@@ -65,8 +65,16 @@ K("n", "<leader>q", ":q<CR>", opts)          -- space + q to exit
 K("n", "<leader>h", ":nohlsearch<CR>", opts) -- space + h to clear highlights
 
 -- INSERT MODE
-K("i", "jj", "<Esc>", opts) -- exit insert mode with jj
-K("i", "JJ", "<Esc>", opts) -- exit insert mode with JJ
+K("i", "jj", "<Esc>", opts)           -- exit insert mode with jj
+K("i", "JJ", "<Esc>", opts)           -- exit insert mode with JJ
+
+K("v", "<", "<gv", opts)              -- stay in visual mode when manually indenting
+K("v", ">", ">gv", opts)              -- stay in // // // // //
+
+K("v", "<A-j>", ":m .+1<CR>==", opts) -- move highlighted text down
+K("v", "<A-k>", ":m .-2<CR>==", opts) -- move highlighted text up
+K("v", "p", '"_dP', opts)
+
 
 -- TERMINAL MODE
 K("n", "<leader>t", ":lua require('FTerm').open()<CR>", opts)                  --open terminal with space + t

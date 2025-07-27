@@ -18,7 +18,7 @@ return {
 			buffer_number = false,
 			button = '',
 			diagnostics = {
-				[vim.diagnostic.severity.ERROR] = { enabled = true, icon = ' ' },
+				[vim.diagnostic.severity.ERROR] = { enabled = false, icon = ' ' },
 			},
 			gitsigns = {
 				added = { enabled = false, icon = ' ' },
@@ -47,7 +47,7 @@ return {
 				align = 'right'
 			},
 		},
-		maximum_length = 25,
+		maximum_length = 15,
 	},
 	config = function(_, opts)
 		require('barbar').setup(opts)
