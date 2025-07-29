@@ -29,7 +29,6 @@ K("n", "<C-l>", "<C-w>l", opts) -- crtl + l to move to window right
 K("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
 K("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
 
-
 -- Quick buffer switching (Alt+1-9)
 K("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
 K("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
@@ -75,7 +74,6 @@ K("v", "<A-j>", ":m .+1<CR>==", opts) -- move highlighted text down
 K("v", "<A-k>", ":m .-2<CR>==", opts) -- move highlighted text up
 K("v", "p", '"_dP', opts)
 
-
 -- TERMINAL MODE
 K("n", "<leader>t", ":lua require('FTerm').open()<CR>", opts)                  --open terminal with space + t
 K("t", "<leader>jj", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exit terminal with escape
@@ -83,7 +81,6 @@ K("t", "<leader>jj", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -
 -- PLUGIN MAPS
 -- Nvim Tree
 K("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- Toggle file explorer
-
 
 -- FZF-LUA Mappings (ALL use project root)
 K("n", "<leader>ff", function()
@@ -100,7 +97,6 @@ K("n", "<leader>fu", function()
 		cwd = get_project_root() -- Search word under cursor in project root
 	})
 end, { desc = "Word under cursor (Project)" })
-
 
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
