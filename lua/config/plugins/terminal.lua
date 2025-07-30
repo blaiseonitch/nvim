@@ -1,25 +1,11 @@
 return {
-	{
-		"numToStr/FTerm.nvim",
-		config = function()
-			require("FTerm").setup({
-				blend = 10,
-				dimensions = {
-					height = 0.85,
-					width = 0.85,
-					x = 0.5,
-					y = 0.5
-				},
-				border = 'rounded',
-				theme = {
-					background = '#1E1E2E', -- Catppuccin "base" (dark)
-					foreground = '#CDD6F4', -- Catppuccin "text"
-					border     = '#F5E0DC', -- Catppuccin "rosewater" (accent)
-				},
-			})
-		end,
-		keys = {
-			{ "<A-i>", function() require("FTerm").toggle() end, desc = "Toggle FTerm" },
-		},
-	},
+	'akinsho/toggleterm.nvim',
+	config = function()
+		require("toggleterm").setup({
+			start_in_insert = false
+		})
+		vim.keymap.set('n', '<leader>`', ':ToggleTerm size=10 direction=horizontal<CR>',
+			{ desc = "Open Bottom Terminal", silent = true }) -- Space `
+		vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
+	end
 }

@@ -75,8 +75,9 @@ K("v", "<A-k>", ":m .-2<CR>==", opts) -- move highlighted text up
 K("v", "p", '"_dP', opts)
 
 -- TERMINAL MODE
-K("n", "<leader>t", ":lua require('FTerm').open()<CR>", opts)                  --open terminal with space + t
-K("t", "<leader>jj", "<C-\\><C-n><CMD>lua require('FTerm').close()<CR>", opts) -- Exit terminal with escape
+K('n', '<leader>`', ':ToggleTerm size=5 direction=horizontal<CR>', { desc = "Open Bottom Terminal", silent = true }) --toggle terminal
+K('t', '<leader>jj', [[<C-\><C-n>]], {})                                                                             --leave terminal mode
+
 
 -- PLUGIN MAPS
 -- Nvim Tree
