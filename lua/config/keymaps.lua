@@ -76,8 +76,8 @@ K("v", "p", '"_dP', opts)
 
 -- TERMINAL MODE
 K('n', '<leader>`', ':ToggleTerm size=5 direction=horizontal<CR>', { desc = "Open Bottom Terminal", silent = true }) --toggle terminal
-K('t', '<leader>jj', [[<C-\><C-n>]], {})                                                                             --leave terminal mode
-
+K('t', 'jj', [[<C-\><C-n>]], {})                                                                                     --leave terminal mode
+K('t', '<Esc>', '<Esc>', { noremap = true, silent = true })
 
 -- PLUGIN MAPS
 -- Nvim Tree
