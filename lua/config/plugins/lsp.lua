@@ -8,7 +8,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls" }, -- auto install
+				ensure_installed = { "lua_ls", "pyright", "clangd" },
 			})
 		end
 	},
@@ -24,7 +24,8 @@ return {
 				settings = {
 					Lua = {
 						runtime = {
-							version = 'LuaJIT', },
+							version = 'LuaJIT',
+						},
 						diagnostics = {
 							globals = { 'vim' }, -- stops "vim is undefined" errors
 						},
@@ -47,6 +48,7 @@ return {
 				}
 			end
 
+			-- C/C++ LSP Setup
 			lspconfig.clangd.setup({
 				cmd = {
 					"clangd",
@@ -57,12 +59,21 @@ return {
 				init_options = {
 					fallbackFlags = get_vcpkg_includes(),
 				},
-				capabilities = require("blink.cmp").get_lsp_capabilities(),
+				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					-- optional keybinds
 				end,
 			})
-		end
 
+			-- Python LSP Setup
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+				settings = {
+					python = {
+						pythonPath = "/sbin/python3"
+					}
+				}
+			})
+		end
 	}
 }

@@ -17,7 +17,7 @@ end
 -- command_mode = "c",
 --]
 
--- NORMAL MODE
+-- NORMAL Modes
 
 -- Better windows navigation
 K("n", "<C-h>", "<C-w>h", opts) -- crtl + h to move to window left
