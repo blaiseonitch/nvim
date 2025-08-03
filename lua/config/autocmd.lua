@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Auto format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.lua", "*.py", "*.js", "*.ts", "*.c", "*.cpp", "*.rs", "*.html", "*.css" },
+	pattern = { "*.lua", "*.py", "*.js", "*.ts", "*.c", "*.cpp", "*.rs", "*.html", "*.css", "*.jsx", "*.cs", "*.h", "*.conf", "*.bat", "*.sh", "*md" },
 	callback = function()
 		vim.lsp.buf.format({ async = false })
 	end,

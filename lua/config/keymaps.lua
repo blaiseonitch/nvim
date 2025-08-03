@@ -75,8 +75,7 @@ K("v", "<A-k>", ":m .-2<CR>==", opts) -- move highlighted text up
 K("v", "p", '"_dP', opts)
 
 -- TERMINAL MODE
-K('n', '<leader>`', ':ToggleTerm size=5 direction=horizontal<CR>', { desc = "Open Bottom Terminal", silent = true }) --toggle terminal
-K('t', 'jj', [[<C-\><C-n>]], {})                                                                                     --leave terminal mode
+K('t', 'jj', [[<C-\><C-n>]], {}) --leave terminal mode
 K('t', '<Esc>', '<Esc>', { noremap = true, silent = true })
 
 -- PLUGIN MAPS
@@ -99,5 +98,20 @@ K("n", "<leader>fu", function()
 	})
 end, { desc = "Word under cursor (Project)" })
 
+
+K("n", "<leader>f", function()
+	vim.lsp.buf.format({ async = true })
+end, opts)
+
+
+K("n", "<leader>d", function()
+	vim.diagnostic.open_float({
+		border = "rounded",
+	})
+end, opts)
+
+
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
+K('i', '<C-BS>', '<C-w>', { desc = 'Delete word backward' })
+K({'i', '<C-Del>', '<C-o>dw', { desc = 'Delete word forward' })

@@ -43,8 +43,9 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+
 vim.diagnostic.config({
-	signs = true,       --Show inline errors
-	virtual_text = true, --Show signs in gutter
-	update_in_insert = false,
+	signs = true,
+	virtual_text = false, -- Show errors in code
+	underline = false,   -- underline on error lines
 })

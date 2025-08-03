@@ -7,15 +7,41 @@ return {
 			["<CR>"] = { "accept", "fallback" }, -- Enter confirms suggestion
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
+			['<C-e>'] = { 'hide', 'fallback' }, -- Escape
 		},
+
 		appearance = {
-			nerd_font_variant = 'mono'
+			nerd_font_variant = 'mono',
+			Text = "󰉿",
+			Method = "󰆧",
+			Function = "󰊕",
+			Constructor = "",
+			Field = "󰜢",
+			Variable = "󰀫",
+			Class = "󰠱",
+			Interface = "",
+			Module = "",
+			Property = "󰜢",
+			Unit = "󰑭",
+			Value = "󰎠",
+			Enum = "",
+			Keyword = "󰌋",
+			Snippet = "",
+			Color = "󰏘",
+			File = "󰈙",
+			Reference = "󰈇",
+			Folder = "󰉋",
+			EnumMember = "",
+			Constant = "󰏿",
+			Struct = "󰙅",
+			Event = "",
+			Operator = "󰆕",
+			TypeParameter = "",
 		},
 
-		completion = { documentation = { auto_show = false } },
+		completion = { documentation = { auto_show = true }, auto_show_delay_ms = 200, },
 
-		-- Default list of enabled providers defined so that you can extend it
-		-- elsewhere in your config, without redefining it, due to `opts_extend`
+
 		sources = {
 			default = { 'lsp', 'path', 'snippets', 'buffer' },
 		},

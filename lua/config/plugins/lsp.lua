@@ -8,10 +8,14 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "clangd" },
+				ensure_installed = {
+					"lua_ls", "pyright", "clangd",
+					"marksman", "ts_ls", "cmake", "html", "cssls"
+				},
 			})
 		end
 	},
+
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -27,7 +31,7 @@ return {
 							version = 'LuaJIT',
 						},
 						diagnostics = {
-							globals = { 'vim' }, -- stops "vim is undefined" errors
+							globals = { "vim" },
 						},
 						workspace = {
 							library = vim.api.nvim_get_runtime_file("", true),
@@ -70,10 +74,33 @@ return {
 				capabilities = capabilities,
 				settings = {
 					python = {
-						pythonPath = "/sbin/python3"
+						pythonPath = vim.fn.exepath("python3"),
 					}
 				}
 			})
+
+			lspconfig.emmet_ls.setup({
+				capabilities = capabilities,
+				filetypes = {
+					"html", "css", "javascript", "javascriptreact", "typescript", 'typescriptreact'
+				},
+				init_options = {
+					html = {
+						options = {
+							["bem.enabled"] = true,
+							["jsx.enabled"] = true,
+						},
+					},
+				},
+			})
+
+			lspconfig.jsonls.setup({ capabilities = capabilities })
+			lspconfig.eslint.setup({ capabilities = capabilities })
+			lspconfig.marksman.setup({ capabilities = capabilities })
+			lspconfig.ts_ls.setup({ capabilities = capabilities })
+			lspconfig.cmake.setup({ capabilities = capabilities })
+			lspconfig.html.setup({ capabilities = capabilities })
+			lspconfig.cssls.setup({ capabilities = capabilities })
 		end
 	}
 }
