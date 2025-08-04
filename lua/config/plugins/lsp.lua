@@ -65,7 +65,6 @@ return {
 				},
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
-					-- optional keybinds
 				end,
 			})
 

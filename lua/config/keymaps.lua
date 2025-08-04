@@ -114,4 +114,4 @@ end, opts)
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
 K('i', '<C-BS>', '<C-w>', { desc = 'Delete word backward' })
-K({'i', '<C-Del>', '<C-o>dw', { desc = 'Delete word forward' })
+K('i', '<C-Del>', '<C-o>dw', { desc = 'Delete word forward' })

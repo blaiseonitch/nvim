@@ -7,40 +7,13 @@ return {
 			["<CR>"] = { "accept", "fallback" }, -- Enter confirms suggestion
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
-			['<C-e>'] = { 'hide', 'fallback' }, -- Escape
+			["<C-e>"] = { "hide", "fallback" }, -- Escape
 		},
 
 		appearance = {
-			nerd_font_variant = 'mono',
-			Text = "󰉿",
-			Method = "󰆧",
-			Function = "󰊕",
-			Constructor = "",
-			Field = "󰜢",
-			Variable = "󰀫",
-			Class = "󰠱",
-			Interface = "",
-			Module = "",
-			Property = "󰜢",
-			Unit = "󰑭",
-			Value = "󰎠",
-			Enum = "",
-			Keyword = "󰌋",
-			Snippet = "",
-			Color = "󰏘",
-			File = "󰈙",
-			Reference = "󰈇",
-			Folder = "󰉋",
-			EnumMember = "",
-			Constant = "󰏿",
-			Struct = "󰙅",
-			Event = "",
-			Operator = "󰆕",
-			TypeParameter = "",
+			nerd_font_variant = 'mono'
 		},
-
-		completion = { documentation = { auto_show = true }, auto_show_delay_ms = 200, },
-
+		completion = { documentation = { auto_show = true } },
 
 		sources = {
 			default = { 'lsp', 'path', 'snippets', 'buffer' },
