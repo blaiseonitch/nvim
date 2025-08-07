@@ -10,7 +10,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls", "pyright", "clangd",
-					"marksman", "ts_ls", "cmake", "html", "cssls"
+					"marksman", "ts_ls", "cmake", "html", "cssls", "omnisharp"
 				},
 			})
 		end

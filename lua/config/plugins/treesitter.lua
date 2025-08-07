@@ -1,8 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	version = false,                           -- Use latest stable version (recommended)
+	version = false,                                 -- Use latest stable version (recommended)
 	build = ":TSUpdate",
-	event = { "BufReadPost", "BufNewFile" },   -- Lazy-load on file open
+	event = { "BufReadPost", "BufNewFile" },         -- Lazy-load on file open
 	cmd = { "TSUpdate", "TSInstall", "TSBufToggle" }, -- Important commands
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects", -- Optional but recommended
@@ -20,7 +20,8 @@ return {
 				"markdown",
 				"json",
 				"c",
-				"cpp"
+				"cpp",
+				"c_sharp"
 			},
 
 			-- Core features

@@ -30,13 +30,14 @@ local options = {
 
 	termguicolors = true,
 
-	ignorecase = true,     --ignore case while searching
-	smartcase = true,      --but do not ignore if caps are used
+	ignorecase = true,        --ignore case while searching
+	smartcase = true,         --but do not ignore if caps are used
 
-	conceallevel = 2,      --markdown conceal
+	conceallevel = 2,         --markdown conceal
 	concealcursor = "nc",
-	mousemoveevent = false, -- block mouse movements
-	splitkeep = 'screen',  --stablizie window open/close
+	mousemoveevent = false,   -- block mouse movements
+	splitkeep = 'screen',     --stablizie window open/close
+	fillchars = { eob = " " }, -- Hide ~ character from buffer lines
 }
 
 for k, v in pairs(options) do

@@ -53,3 +53,34 @@ return {
 		require('barbar').setup(opts)
 	end,
 }
+
+-- return {
+-- 	'romgrk/barbar.nvim',
+-- 	dependencies = {
+-- 		'lewis6991/gitsigns.nvim',   -- OPTIONAL: for git status
+-- 		'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+-- 	},
+-- 	init = function() vim.g.barbar_auto_setup = false end,
+-- 	opts = {
+-- 		animation = false,
+-- 		tabpages = true,
+-- 		focus_on_close = 'left',
+--
+-- 		icons = {
+-- 			buffer_index = false,
+-- 			buffer_number = false,
+-- 			button = '×',
+-- 			separator = { left = '▎', right = '' },
+-- 			modified = { button = '●' },
+-- 			pinned = { button = '📌' },
+-- 		},
+--
+-- 		sidebar_filetypes = {
+-- 			NvimTree = true,
+-- 			['neo-tree'] = true,
+-- 		},
+--
+-- 		maximum_length = 20,
+-- 	},
+-- 	version = '^1.0.0',
+-- }
