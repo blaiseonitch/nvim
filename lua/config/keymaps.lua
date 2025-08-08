@@ -99,9 +99,9 @@ K("n", "<leader>fu", function()
 end, { desc = "Word under cursor (Project)" })
 
 
-K("n", "<leader>f", function()
+K("n", "<leader>fm", function()
 	vim.lsp.buf.format({ async = true })
-end, opts)
+end, { buffer = bufnr, desc = "Format file" })
 
 
 K("n", "<leader>d", function()
