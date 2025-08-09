@@ -46,7 +46,7 @@ end
 
 
 vim.diagnostic.config({
-	signs = true,
+	signs = false,
 	virtual_text = false, -- Show errors in code
 	underline = false,   -- underline on error lines
 })

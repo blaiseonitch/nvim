@@ -40,8 +40,9 @@ return {
 			},
 			sections = {
 				lualine_a = { { "branch", icon = "" } },
-				lualine_b = { { "mode", fmt = function(str) return "-- " .. str .. " --" end } },
-				lualine_c = { diagnostics },
+				lualine_b = { "mode" },
+				-- lualine_c = { diagnostics },
+				lualine_c = { { "filename", path = 0, file_status = true } },
 				lualine_x = {
 					-- { "diff",
 					--   colored = true,
@@ -51,7 +52,12 @@ return {
 					"filetype"
 				},
 				lualine_y = { "location" },
-				lualine_z = { progress },
+				-- lualine_z = { progress },
+				lualine_z = {
+					function()
+						return string.format("%d|%d", vim.fn.line("."), vim.fn.line("$"))
+					end
+				}
 			},
 			extensions = { "nvim-tree" },
 		}

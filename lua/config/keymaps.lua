@@ -113,8 +113,8 @@ end, opts)
 
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
-K('i', '<C-BS>', '<C-w>', { desc = 'Delete word backward' })
-K('i', '<C-Del>', '<C-o>dw', { desc = 'Delete word forward' })
+K("i", "<C-BS>", "<C-w>", opts)        --VSCODE like per word deletion
+K("i", "<C-Del>", "<C-o>dw", opt)
 
 --Disabled keys
 K({ 'i', 'n', 'v' }, '<PageUp>', '<Nop>', { silent = true })
