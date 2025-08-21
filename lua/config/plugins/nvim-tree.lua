@@ -11,17 +11,17 @@ return {
 				icons = {
 					show = {
 						file = true,
-						folder = false,
-						folder_arrow = true,
+						folder = true,
+						folder_arrow = false,
 						git = false,
 					},
 				},
 			},
 			view = {
-				width = 25,
+				width = 20,
 				side = 'left',
 			},
-			sync_root_with_cwd = true, --fix to open cwd with tree
+			sync_root_with_cwd = true,
 			respect_buf_cwd = true,
 			update_cwd = true,
 			update_focused_file = {

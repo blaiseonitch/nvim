@@ -30,7 +30,10 @@ return {
 				icons_enabled = true,
 				theme = "auto",
 				component_separators = "",
-				section_separators = { left = "", right = "" },
+				-- section_separators = { left = "", right = "" },
+				-- section_separators = { left = "", right = "" },
+				-- section_separators = { left = "", right = "" },
+				section_separators = "",
 				disabled_filetypes = {
 					"alpha",
 					"dashboard",
@@ -54,9 +57,9 @@ return {
 				lualine_y = { "location" },
 				-- lualine_z = { progress },
 				lualine_z = {
-					function()
-						return string.format("%d|%d", vim.fn.line("."), vim.fn.line("$"))
-					end
+					-- function()
+					-- 	return string.format("%d|%d", vim.fn.line("."), vim.fn.line("$"))
+					-- end
 				}
 			},
 			extensions = { "nvim-tree" },
