@@ -100,6 +100,7 @@ return {
 			lspconfig.cmake.setup({ capabilities = capabilities })
 			lspconfig.html.setup({ capabilities = capabilities })
 			lspconfig.cssls.setup({ capabilities = capabilities })
+			lspconfig.glsl_analyzer.setup({ capabilities = capabilities })
 		end
 	}
 }

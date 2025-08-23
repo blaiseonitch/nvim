@@ -104,12 +104,16 @@ K("n", "<leader>fm", function()
 end, { buffer = bufnr, desc = "Format file" })
 
 
-K("n", "<leader>d", function()
+K("n", "<leader>d", function() -- Display diagnostics (if any errors)
 	vim.diagnostic.open_float({
 		border = "rounded",
 	})
 end, opts)
 
+K("n", "<leader>k", vim.lsp.buf.hover, { buffer = 0 }) -- Display function/class documentory
+K("n", "<leader>gd", vim.lsp.buf.definition, opts)     -- Go to definition of highlighted object
+K("n", "<leader>gs", vim.lsp.buf.signature_help, opts) -- Display the information parameters of current funtion
+K("n", "<leader>gf", vim.lsp.buf.declaration, opts)    -- Go to declaration of highlighted object
 
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
