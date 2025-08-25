@@ -30,21 +30,21 @@ K("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
 K("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
 
 -- Quick buffer switching (Alt+1-9)
-K("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
-K("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
-K("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
-K("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
-K("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
-K("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
-K("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
-K("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
-K("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
-K("n", "<A-0>", "<Cmd>BufferLast<CR>", opts) -- Last buffer
-
--- Quick close/pin
-K("n", "<A-c>", "<Cmd>BufferClose<CR>", opts) -- Close current buffer
-K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)   -- Pin/unpin buffer
-
+-- K("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
+-- K("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
+-- K("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
+-- K("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
+-- K("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
+-- K("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
+-- K("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
+-- K("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
+-- K("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
+-- K("n", "<A-0>", "<Cmd>BufferLast<CR>", opts) -- Last buffer
+--
+-- -- Quick close/pin
+-- K("n", "<A-c>", "<Cmd>BufferClose<CR>", opts) -- Close current buffer
+-- K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)   -- Pin/unpin buffer
+--
 -- Splitting screen
 K("n", "<leader>s", ":split<CR>:bnext<CR>", opts)   -- split screen horizontally
 K("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", opts) -- split screen vertically
@@ -64,14 +64,14 @@ K("n", "<leader>q", ":q<CR>", opts)          -- space + q to exit
 K("n", "<leader>h", ":nohlsearch<CR>", opts) -- space + h to clear highlights
 
 -- INSERT MODE
-K("i", "jj", "<Esc>", opts)           -- exit insert mode with jj
-K("i", "JJ", "<Esc>", opts)           -- exit insert mode with JJ
+K("i", "jj", "<Esc>", opts)             -- exit insert mode with jj
+K("i", "JJ", "<Esc>", opts)             -- exit insert mode with JJ
 
-K("v", "<", "<gv", opts)              -- stay in visual mode when manually indenting
-K("v", ">", ">gv", opts)              -- stay in // // // // //
+K("v", "<", "<gv", opts)                -- stay in visual mode when manually indenting
+K("v", ">", ">gv", opts)                -- stay in // // // // //
 
-K("v", "<A-j>", ":m .+1<CR>==", opts) -- move highlighted text down
-K("v", "<A-k>", ":m .-2<CR>==", opts) -- move highlighted text up
+K("v", "<A-j>", ":m .+1<CR>==gv", opts) -- move highlighted text down
+K("v", "<A-k>", ":m .-2<CR>==gv", opts) -- move highlighted text up
 K("v", "p", '"_dP', opts)
 
 -- TERMINAL MODE
