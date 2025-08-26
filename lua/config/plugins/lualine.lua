@@ -19,10 +19,8 @@ return {
 		local progress = function()
 			local current_line = vim.fn.line(".")
 			local total_lines = vim.fn.line("$")
-			local chars = { "", "", "" }
 			local line_ratio = current_line / total_lines
-			local index = math.ceil(line_ratio * #chars)
-			return chars[index] .. " " .. math.floor(line_ratio * 100) .. "%%"
+			return math.floor(line_ratio * 100) .. "%%"
 		end
 
 		return {
@@ -54,9 +52,10 @@ return {
 					"fileformat",
 					"filetype"
 				},
-				lualine_y = { "location" },
-				-- lualine_z = { progress },
+				lualine_y = { progress },
+				-- lualine_z = { "location" },
 				lualine_z = {
+					"location"
 					-- function()
 					-- 	return string.format("%d|%d", vim.fn.line("."), vim.fn.line("$"))
 					-- end
