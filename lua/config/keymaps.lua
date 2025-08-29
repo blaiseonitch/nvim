@@ -42,8 +42,8 @@ K("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
 -- K("n", "<A-0>", "<Cmd>BufferLast<CR>", opts) -- Last buffer
 --
 -- -- Quick close/pin
--- K("n", "<A-c>", "<Cmd>BufferClose<CR>", opts) -- Close current buffer
--- K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)   -- Pin/unpin buffer
+K("n", "<A-c>", "<Cmd>BufferClose<CR>", opts) -- Close current buffer
+K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)   -- Pin/unpin buffer
 --
 -- Splitting screen
 K("n", "<leader>s", ":split<CR>:bnext<CR>", opts)   -- split screen horizontally
@@ -120,7 +120,7 @@ K("n", "<leader>mm", function()
   })
 end, opts)
 
-K("n", "<leader>k", vim.lsp.buf.hover, { buffer = 0 })          -- Display function/class documentory
+K("n", "<leader>k", vim.lsp.buf.hover, opts)          -- Display function/class documentory
 K("n", "<leader>gd", vim.lsp.buf.definition, opts)              -- Go to definition of highlighted o,bject
 K({ "n", "i" }, "<leader>gs", vim.lsp.buf.signature_help, opts) -- Display the information parameters of current funtion
 K({"n", "i"}, "<leader>gf", vim.lsp.buf.declaration, opts)             -- Go to declaration of highlighted object
