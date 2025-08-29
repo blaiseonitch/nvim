@@ -110,10 +110,20 @@ K("n", "<leader>d", function() -- Display diagnostics (if any errors)
 	})
 end, opts)
 
+-- Track state outside
+local diagnostics_virtual_text = true
+
+K("n", "<leader>mm", function()
+  diagnostics_virtual_text = not diagnostics_virtual_text
+  vim.diagnostic.config({
+    virtual_text = diagnostics_virtual_text,
+  })
+end, opts)
+
 K("n", "<leader>k", vim.lsp.buf.hover, { buffer = 0 })          -- Display function/class documentory
-K("n", "<leader>gd", vim.lsp.buf.definition, opts)              -- Go to definition of highlighted object
+K("n", "<leader>gd", vim.lsp.buf.definition, opts)              -- Go to definition of highlighted o,bject
 K({ "n", "i" }, "<leader>gs", vim.lsp.buf.signature_help, opts) -- Display the information parameters of current funtion
-K("n", "<leader>gf", vim.lsp.buf.declaration, opts)             -- Go to declaration of highlighted object
+K({"n", "i"}, "<leader>gf", vim.lsp.buf.declaration, opts)             -- Go to declaration of highlighted object
 
 -- MISC
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
