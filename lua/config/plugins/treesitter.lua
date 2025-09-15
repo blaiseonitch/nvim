@@ -21,7 +21,8 @@ return {
 				"json",
 				"c",
 				"cpp",
-				"c_sharp"
+				"c_sharp",
+				"java"
 			},
 
 			-- Core features

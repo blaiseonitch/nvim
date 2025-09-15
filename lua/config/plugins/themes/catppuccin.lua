@@ -5,7 +5,7 @@ return {
 		lazy = false,                 -- Load immediately (not lazy-loaded)
 		priority = 1000,              -- Load before other plugins
 		opts = {
-			flavour = "macchiato",      -- "latte", "frappe", "macchiato", or "mocha"
+			flavour = "mocha",      -- "latte", "frappe", "macchiato", or "mocha"
 			transparent_background = true, -- Set to true for transparency
 			integrations = {
 				cmp = true,
@@ -17,8 +17,8 @@ return {
 			},
 		},
 		-- config = function(_, opts)
-		-- 	require("catppuccin").setup(opts)
-		-- 	vim.cmd.colorscheme("catppuccin") -- Apply the theme
+		-- require("catppuccin").setup(opts)
+		-- vim.cmd.colorscheme("catppuccin") -- Apply the theme
 		-- end,
 	}
 }

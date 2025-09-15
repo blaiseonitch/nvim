@@ -10,7 +10,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls", "pyright", "clangd",
-					"marksman", "ts_ls", "cmake", "html", "cssls", "omnisharp"
+					"marksman", "ts_ls", "cmake", "html", "cssls", "omnisharp", "jdtls"
 				},
 			})
 		end
@@ -44,6 +44,8 @@ return {
 				}
 			})
 
+
+			-- VCPKG  setup
 			local function get_vcpkg_includes()
 				local vcpkg_root = os.getenv("VCPKG_ROOT") or os.getenv("HOME") .. "/vcpkg"
 				local triplet = os.getenv("VCPKG_DEFAULT_TRIPLET") or "x64-linux"
