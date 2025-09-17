@@ -1,17 +1,3 @@
--- return {
--- 	'akinsho/toggleterm.nvim',
--- 	config = function()
--- 		require("toggleterm").setup({
--- 			start_in_insert = false
--- 		})
--- 		vim.keymap.set('n', '<leader>`', ':ToggleTerm size=10 direction=horizontal<CR>',
--- 			{ desc = "Open Bottom Terminal", silent = true }) -- Space `
--- 		vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
--- 	end
--- }
-
-
-
 return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
@@ -75,12 +61,12 @@ return {
 		end
 
 		-- Alternative approach: Always create new terminals
-		function _G.new_terminal(direction, size)
-			direction = direction or "horizontal"
-			size = size or (direction == "horizontal" and 5 or 5)
-			terminal_count = terminal_count + 1
-			vim.cmd(string.format("ToggleTerm %d size=%d direction=%s", terminal_count, size, direction))
-		end
+		-- function _G.new_terminal(direction, size)
+		-- 	direction = direction or "horizontal"
+		-- 	size = size or (direction == "horizontal" and 5 or 5)
+		-- 	terminal_count = terminal_count + 1
+		-- 	vim.cmd(string.format("ToggleTerm %d size=%d direction=%s", terminal_count, size, direction))
+		-- end
 
 		-- Terminal navigation
 		function _G.set_terminal_keymaps()
@@ -96,14 +82,14 @@ return {
 	end,
 	keys = {
 		-- Smart toggle (creates new if in terminal, toggles if not)
-		{ "<A-h>",      "<cmd>lua smart_toggle_term('horizontal', 5)<cr>", desc = "Smart Horizontal Terminal" },
-		{ "<A-v>",      "<cmd>lua smart_toggle_term('vertical', 5)<cr>",   desc = "Smart Vertical Terminal" },
+		{ "<A-h>",      "<cmd>lua smart_toggle_term('horizontal', 10)<cr>", desc = "Smart Horizontal Terminal" },
+		{ "<A-v>",      "<cmd>lua smart_toggle_term('vertical', 10)<cr>",   desc = "Smart Vertical Terminal" },
 		{ "<A-i>",      "<cmd>lua smart_toggle_term('float')<cr>",         desc = "Smart Float Terminal" },
 
 		-- Always create new terminal (for guaranteed splitting)
-		{ "<leader>th", "<cmd>lua new_terminal('horizontal', 5)<cr>",      desc = "New Horizontal Terminal" },
-		{ "<leader>tv", "<cmd>lua new_terminal('vertical', 5)<cr>",        desc = "New Vertical Terminal" },
-		{ "<leader>tf", "<cmd>lua new_terminal('float')<cr>",              desc = "New Float Terminal" },
+		-- { "<leader>th", "<cmd>lua new_terminal('horizontal', 5)<cr>",      desc = "New Horizontal Terminal" },
+		-- { "<leader>tv", "<cmd>lua new_terminal('vertical', 5)<cr>",        desc = "New Vertical Terminal" },
+		-- { "<leader>tf", "<cmd>lua new_terminal('float')<cr>",              desc = "New Float Terminal" },
 
 		-- Toggle specific terminals
 		{ "<leader>t1", "<cmd>1ToggleTerm<cr>",                            desc = "Toggle Terminal 1" },
