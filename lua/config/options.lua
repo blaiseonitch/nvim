@@ -10,7 +10,7 @@ local options = {
 	swapfile = false,         --swap just gets in the way, usually
 	backup = false,
 	undofile = true,          --undos are saved to file
-	cursorline = false,        --highlight line
+	cursorline = false,       --highlight line
 	ttyfast = true,           --faster scrolling
 	smoothscroll = true,
 	title = true,             --automatic window titlebar
@@ -48,5 +48,5 @@ end
 vim.diagnostic.config({
 	signs = false,
 	virtual_text = true, -- Show errors in code
-	underline = false,   -- underline on error lines
+	underline = false,  -- underline on error lines
 })

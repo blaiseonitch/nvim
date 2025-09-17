@@ -132,9 +132,8 @@ K({"n", "i"}, "<leader>gf", vim.lsp.buf.declaration, opts)             -- Go to 
 K("n", "<leader>R", ":so %<CR>", opts) -- Reload nvim config
 K("i", "<C-BS>", "<C-w>", opts)        --VSCODE like per word deletion
 K("i", "<C-Del>", "<C-o>dw", opt)
-K("n", "<leader>fc", "za", opts) -- toggle code fold for current code block
+K("n", "<leader>fd", "za", opts) -- toggle code fold for current code block
 
--- function to toggle folds for entire file
 K("n", "<leader>fa", function ()
 	local foldLevel = vim.fn.foldlevel(".")
 	if foldLevel > 0 and vim.fn.foldclosed(".") == -1 then
