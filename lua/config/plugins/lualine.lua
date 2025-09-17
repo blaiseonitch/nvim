@@ -36,6 +36,7 @@ return {
 					"alpha",
 					"dashboard",
 					"NvimTree",
+					"toggleterm",
 				},
 				always_divide_middle = true,
 			},

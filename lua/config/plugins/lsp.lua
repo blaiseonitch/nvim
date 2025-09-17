@@ -9,8 +9,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls", "pyright", "clangd",
-					"marksman", "ts_ls", "cmake", "html", "cssls", "omnisharp", "jdtls"
+					"lua_ls", "pyright", "marksman", "ts_ls", "cmake", "html", "cssls", "omnisharp", "jdtls"
 				},
 			})
 		end
@@ -56,12 +55,12 @@ return {
 
 			-- C/C++ LSP Setup
 			lspconfig.clangd.setup({
-				cmd = {
-					"clangd",
-					"--background-index",
-					"--clang-tidy",
-					"--enable-config",
-				},
+				-- cmd = {
+				-- 	"clangd",
+				-- 	"--background-index",
+				-- 	"--clang-tidy",
+				-- 	"--enable-config",
+				-- },
 				init_options = {
 					fallbackFlags = get_vcpkg_includes(),
 				},
