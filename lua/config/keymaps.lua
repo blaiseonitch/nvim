@@ -82,6 +82,9 @@ K('t', '<Esc>', '<Esc>', { noremap = true, silent = true })
 -- Nvim Tree
 K("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- Toggle file explorer
 
+-- Zen Mode
+K("n", "<leader>zz", "<cmd>ZenMode<cr>", opts) -- Toggle zen mode
+
 -- FZF-LUA Mappings (ALL use project root)
 K("n", "<leader>ff", function()
 	fzf.files({ cwd = get_project_root() }) -- Files in project root
