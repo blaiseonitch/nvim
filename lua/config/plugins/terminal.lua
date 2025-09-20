@@ -66,9 +66,9 @@ return {
 	end,
 	keys = {
 		-- Smart toggle (creates new if in terminal, toggles if not)
-		{ "<A-h>",      "<cmd>lua smart_toggle_term('horizontal', 25)<cr>", desc = "Smart Horizontal Terminal" },
+		{ "<A-h>",      "<cmd>lua smart_toggle_term('horizontal', 5)<cr>", desc = "Smart Horizontal Terminal" },
 		{ "<A-v>",      "<cmd>lua smart_toggle_term('vertical', 25)<cr>",   desc = "Smart Vertical Terminal" },
-		{ "<A-i>",      "<cmd>lua smart_toggle_term('float')<cr>",         desc = "Smart Float Terminal" },
+		{ "<A-f>",      "<cmd>lua smart_toggle_term('float')<cr>",         desc = "Smart Float Terminal" },
 
 		-- Toggle specific terminals
 		{ "<leader>t1", "<cmd>1ToggleTerm<cr>",                            desc = "Toggle Terminal 1" },
