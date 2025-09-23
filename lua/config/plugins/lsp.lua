@@ -2,33 +2,41 @@ return {
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
-		config = true
+		config = true,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls", "pyright", "marksman", "ts_ls", "cmake", "html", "cssls", "omnisharp", "jdtls"
+					"lua_ls",
+					"pyright",
+					"marksman",
+					"ts_ls",
+					"cmake",
+					"html",
+					"cssls",
+					"omnisharp",
+					"jdtls",
 				},
 				automatic_installation = true,
 			})
-		end
+		end,
 	},
 
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local lspconfig = require("lspconfig")
+			local lspconfig = vim.lsp.config
 
 			-- Lua LSP Setup
-			lspconfig.lua_ls.setup({
+			lspconfig("lua_ls", {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
 						runtime = {
-							version = 'LuaJIT',
+							version = "LuaJIT",
 						},
 						diagnostics = {
 							globals = { "vim" },
@@ -40,10 +48,9 @@ return {
 						telemetry = {
 							enable = false,
 						},
-					}
-				}
+					},
+				},
 			})
-
 
 			-- VCPKG  setup
 			local function get_vcpkg_includes()
@@ -55,7 +62,7 @@ return {
 			end
 
 			-- C/C++ LSP Setup
-			lspconfig.clangd.setup({
+			lspconfig("clangd", {
 				cmd = {
 					"clangd",
 					"--background-index",
@@ -66,24 +73,28 @@ return {
 					fallbackFlags = get_vcpkg_includes(),
 				},
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-				end,
+				on_attach = function(client, bufnr) end,
 			})
 
 			-- Python LSP Setup
-			lspconfig.pyright.setup({
+			lspconfig("pyright", {
 				capabilities = capabilities,
 				settings = {
 					python = {
 						pythonPath = vim.fn.exepath("python3"),
-					}
-				}
+					},
+				},
 			})
 
-			lspconfig.emmet_ls.setup({
+			lspconfig("emmet_ls", {
 				capabilities = capabilities,
 				filetypes = {
-					"html", "css", "javascript", "javascriptreact", "typescript", 'typescriptreact'
+					"html",
+					"css",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
 				},
 				init_options = {
 					html = {
@@ -95,14 +106,14 @@ return {
 				},
 			})
 
-			lspconfig.jsonls.setup({ capabilities = capabilities })
-			lspconfig.eslint.setup({ capabilities = capabilities })
-			lspconfig.marksman.setup({ capabilities = capabilities })
-			lspconfig.ts_ls.setup({ capabilities = capabilities })
-			lspconfig.cmake.setup({ capabilities = capabilities })
-			lspconfig.html.setup({ capabilities = capabilities })
-			lspconfig.cssls.setup({ capabilities = capabilities })
-			lspconfig.glsl_analyzer.setup({ capabilities = capabilities })
-		end
-	}
+			lspconfig("jsonls", { capabilities = capabilities })
+			lspconfig("eslint", { capabilities = capabilities })
+			lspconfig("marksman", { capabilities = capabilities })
+			lspconfig("ts_ls", { capabilities = capabilities })
+			lspconfig("cmake", { capabilities = capabilities })
+			lspconfig("html", { capabilities = capabilities })
+			lspconfig("cssls", { capabilities = capabilities })
+			lspconfig("glsl_analyzer", { capabilities = capabilities })
+		end,
+	},
 }
