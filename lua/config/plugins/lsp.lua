@@ -119,30 +119,8 @@ return {
 				},
 			})
 
-			lspconfig("omnisharp", {
-				cmd = {
-					"omnisharp",
-					"--languageserver",
-					"--hostPID",
-					tostring(vim.fn.getpid()),
-				},
-				capabilities = capabilities,
-				settings = {
-					FormattingOptions = {
-						OrganizeImports = true,
-					},
-					MsBuild = {
-						LoadProjectsOnDemand = false,
-					},
-					RoslynExtensionsOptions = {
-						EnableAnalyzersSupport = true,
-						EnableImportCompletion = true,
-					},
-					EditorConfigSupport = true,
-				},
-			})
-
 			lspconfig("jsonls", { capabilities = capabilities })
+			lspconfig("omnisharp", { capabilities = capabilities })
 			lspconfig("eslint", { capabilities = capabilities })
 			lspconfig("marksman", { capabilities = capabilities })
 			lspconfig("ts_ls", { capabilities = capabilities })
