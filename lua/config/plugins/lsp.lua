@@ -106,6 +106,42 @@ return {
 				},
 			})
 
+			lspconfig("arduino_language_server", {
+				capabilities = capabilities,
+				cmd = {
+					"arduino_language_server",
+					"-cli",
+					"/usr/bin/arduino-cli",
+					"-cli-config",
+					"/home/blaze/.arduino15/arduino-cli.yaml",
+					"-clangd",
+					"/usr/bin/clangd",
+				},
+			})
+
+			lspconfig("omnisharp", {
+				cmd = {
+					"omnisharp",
+					"--languageserver",
+					"--hostPID",
+					tostring(vim.fn.getpid()),
+				},
+				capabilities = capabilities,
+				settings = {
+					FormattingOptions = {
+						OrganizeImports = true,
+					},
+					MsBuild = {
+						LoadProjectsOnDemand = false,
+					},
+					RoslynExtensionsOptions = {
+						EnableAnalyzersSupport = true,
+						EnableImportCompletion = true,
+					},
+					EditorConfigSupport = true,
+				},
+			})
+
 			lspconfig("jsonls", { capabilities = capabilities })
 			lspconfig("eslint", { capabilities = capabilities })
 			lspconfig("marksman", { capabilities = capabilities })
@@ -114,6 +150,7 @@ return {
 			lspconfig("html", { capabilities = capabilities })
 			lspconfig("cssls", { capabilities = capabilities })
 			lspconfig("glsl_analyzer", { capabilities = capabilities })
+			lspconfig("asm_lsp", { capabilities = capabilities })
 		end,
 	},
 }

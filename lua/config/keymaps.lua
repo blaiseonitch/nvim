@@ -143,6 +143,9 @@ K("i", "<C-Del>", "<C-o>dw", opt)
 -- 	end
 -- end, opts )
 
+K('n', '<leader>sp', '<cmd>set spell!<CR>', { desc = "Toggle spell checker" })
+
+
 --Disabled keys
 K({ 'i', 'n', 'v' }, '<PageUp>', '<Nop>', { silent = true })
 K({ 'i', 'n', 'v' }, '<PageDown>', '<Nop>', { silent = true })
