@@ -22,7 +22,10 @@ return {
 				"c",
 				"cpp",
 				"c_sharp",
-				"java"
+				"java",
+				"cmake",
+				"make",
+				"yaml"
 			},
 
 			-- Core features

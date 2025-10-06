@@ -106,19 +106,6 @@ return {
 				},
 			})
 
-			lspconfig("arduino_language_server", {
-				capabilities = capabilities,
-				cmd = {
-					"arduino_language_server",
-					"-cli",
-					"/usr/bin/arduino-cli",
-					"-cli-config",
-					"/home/blaze/.arduino15/arduino-cli.yaml",
-					"-clangd",
-					"/usr/bin/clangd",
-				},
-			})
-
 			lspconfig("jsonls", { capabilities = capabilities })
 			lspconfig("omnisharp", { capabilities = capabilities })
 			lspconfig("eslint", { capabilities = capabilities })
