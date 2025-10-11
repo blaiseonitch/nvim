@@ -3,18 +3,18 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- Optional icon support
 	event = "VeryLazy",                              -- Loads after UI starts (better performance)
 	opts = function()
-		local diagnostics = {
-			"diagnostics",
-			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn" },
-			symbols = { error = " ", warn = " " },
-			colored = true,
-			update_in_insert = false,
-			always_visible = true,
-			cond = function()
-				return vim.bo.filetype ~= "markdown"
-			end,
-		}
+		-- local diagnostics = {
+		-- 	"diagnostics",
+		-- 	sources = { "nvim_diagnostic" },
+		-- 	sections = { "error", "warn" },
+		-- 	symbols = { error = " ", warn = " " },
+		-- 	colored = true,
+		-- 	update_in_insert = false,
+		-- 	always_visible = true,
+		-- 	cond = function()
+		-- 		return vim.bo.filetype ~= "markdown"
+		-- 	end,
+		-- }
 
 		local progress = function()
 			local current_line = vim.fn.line(".")
@@ -26,7 +26,9 @@ return {
 		return {
 			options = {
 				icons_enabled = true,
-				theme = "auto",
+				-- theme = "tomorrow_night",
+				-- theme = "16color",
+				theme = "base16",
 				component_separators = "",
 				-- section_separators = { left = "", right = "" },
 				-- section_separators = { left = "", right = "" },
@@ -51,7 +53,8 @@ return {
 					--   symbols = { added = " ", modified = " ", removed = " " }
 					-- },
 					"fileformat",
-					"filetype"
+					"filetype",
+					"encoding"
 				},
 				lualine_y = { progress },
 				-- lualine_z = { "location" },
