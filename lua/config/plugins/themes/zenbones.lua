@@ -10,6 +10,6 @@ return {
 	config = function()
 			vim.g.zenbones_compat = 1
 	    vim.g.zenbones_darken_comments = 45
-	    vim.cmd.colorscheme('zenbones')
+	    -- vim.cmd.colorscheme('zenbones')
 	end
 }
