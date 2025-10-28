@@ -27,8 +27,8 @@ return {
 			options = {
 				icons_enabled = true,
 				-- theme = "tomorrow_night",
-				-- theme = "16color",
-				theme = "base16",
+				theme = "16color",
+				-- theme = "base16",
 				component_separators = "",
 				-- section_separators = { left = "", right = "" },
 				-- section_separators = { left = "", right = "" },

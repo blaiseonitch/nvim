@@ -26,25 +26,8 @@ K("n", "<C-k>", "<C-w>k", opts) -- crtl + k to move to window below
 K("n", "<C-l>", "<C-w>l", opts) -- crtl + l to move to window right
 
 -- Move to previous/next
-K("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
-K("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
+K("n", "<leader>fb", "<Cmd>bnext<CR>", opts)
 
--- Quick buffer switching (Alt+1-9)
--- K("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
--- K("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
--- K("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
--- K("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
--- K("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
--- K("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
--- K("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
--- K("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
--- K("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
--- K("n", "<A-0>", "<Cmd>BufferLast<CR>", opts) -- Last buffer
---
--- -- Quick close/pin
-K("n", "<A-c>", "<Cmd>BufferClose<CR>", opts) -- Close current buffer
-K("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)   -- Pin/unpin buffer
---
 -- Splitting screen
 K("n", "<leader>s", ":split<CR>:bnext<CR>", opts)   -- split screen horizontally
 K("n", "<leader>vs", ":vsplit<CR>:bnext<CR>", opts) -- split screen vertically
@@ -54,6 +37,11 @@ K("n", "<C-Up>", ":resize -2<CR>", opts)             -- resize current active bu
 K("n", "<C-Down>", ":resize +2<CR>", opts)           -- resize current active buffer 2 pixels to the bottom
 K("n", "<C-Left>", ":vertical resize -2<CR>", opts)  -- resize current active buffer 2 pixels to the left
 K("n", "<C-Right>", ":vertical resize +2<CR>", opts) -- resize current active buffer 2 pixels to the right
+
+-- Create and move across tabs
+K("n", "<leader>tn", ":tabnew<CR>", opts)
+K("n", "<leader>tc", ":tabclose<CR>", opts)
+K("n", "<leader>tN", ":tabNext<CR>", opts)
 
 -- ZZ to save and exit
 -- ZQ exit without saving
@@ -144,7 +132,6 @@ K("i", "<C-Del>", "<C-o>dw", opt)
 -- end, opts )
 
 K('n', '<leader>sp', '<cmd>set spell!<CR>', { desc = "Toggle spell checker" })
-
 
 --Disabled keys
 K({ 'i', 'n', 'v' }, '<PageUp>', '<Nop>', { silent = true })
