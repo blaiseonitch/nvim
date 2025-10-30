@@ -39,6 +39,7 @@ K("n", "<C-Left>", ":vertical resize -2<CR>", opts)  -- resize current active bu
 K("n", "<C-Right>", ":vertical resize +2<CR>", opts) -- resize current active buffer 2 pixels to the right
 
 -- Create and move across tabs
+--K("n", "<leader>tn" ":tabedit <C-r>=escape(expand("%:p:h"), " ")<CR>/", opts)
 K("n", "<leader>tn", ":tabnew<CR>", opts)
 K("n", "<leader>tc", ":tabclose<CR>", opts)
 K("n", "<leader>tN", ":tabNext<CR>", opts)
@@ -90,10 +91,11 @@ K("n", "<leader>fu", function()
 end, { desc = "Word under cursor (Project)" })
 
 
-K("n", "<leader>fm", function()
-	vim.lsp.buf.format({ async = true })
-end, { buffer = bufnr, desc = "Format file" })
+-- K("n", "<leader>fm", function()
+-- 	vim.lsp.buf.format({ async = true })
+-- end, { buffer = bufnr, desc = "Format file" })
 
+K("n", "<leader>fm", "=G", opts)
 
 K("n", "<leader>d", function() -- Display diagnostics (if any errors)
 	vim.diagnostic.open_float({
