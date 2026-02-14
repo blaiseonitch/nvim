@@ -33,57 +33,60 @@ require("lazy").setup({
     end,
   },
 
-{
-	"ellisonleao/gruvbox.nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		-- Default options:
-		require("gruvbox").setup({
-				})
-		-- vim.cmd("colorscheme gruvbox")
-	end
-},
-{
-	"askfiy/visual_studio_code",
-	priority = 100,
-	config = function()
-		require("visual_studio_code").setup({
-			mode = "dark",
-			-- Whether to load all color schemes
-			preset = true,
-			-- Whether to enable background transparency
-			transparent = true,
-			expands = {
-				hop = true,
-				dbui = true,
-				lazy = true,
-				aerial = true,
-				null_ls = true,
-				nvim_cmp = true,
-				gitsigns = true,
-				which_key = true,
-				nvim_tree = false,
-				lspconfig = true,
-				telescope = true,
-				bufferline = true,
-				nvim_navic = true,
-				nvim_notify = true,
-				vim_illuminate = true,
-				nvim_treesitter = true,
-				nvim_ts_rainbow = true,
-				nvim_scrollview = true,
-				nvim_ts_rainbow2 = true,
-				indent_blankline = true,
-				vim_visual_multi = true,
-			},
-			hooks = {
-				before = function(conf, colors, utils) end,
-				after = function(conf, colors, utils) end,
-			},
-		})
-		vim.cmd([[colorscheme visual_studio_code]])
-	end,
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Default options:
+      require("gruvbox").setup({
+        palette_overrides = {
+          dark0_hard = "#000000",
+        }
+      })
+      vim.cmd("colorscheme gruvbox")
+    end
+  },
+  {
+    "askfiy/visual_studio_code",
+    priority = 100,
+    config = function()
+      require("visual_studio_code").setup({
+        mode = "dark",
+        -- Whether to load all color schemes
+        preset = true,
+        -- Whether to enable background transparency
+        transparent = true,
+        expands = {
+          hop = true,
+          dbui = true,
+          lazy = true,
+          aerial = true,
+          null_ls = true,
+          nvim_cmp = true,
+          gitsigns = true,
+          which_key = true,
+          nvim_tree = false,
+          lspconfig = true,
+          telescope = true,
+          bufferline = true,
+          nvim_navic = true,
+          nvim_notify = true,
+          vim_illuminate = true,
+          nvim_treesitter = true,
+          nvim_ts_rainbow = true,
+          nvim_scrollview = true,
+          nvim_ts_rainbow2 = true,
+          indent_blankline = true,
+          vim_visual_multi = true,
+        },
+        hooks = {
+          before = function(conf, colors, utils) end,
+          after = function(conf, colors, utils) end,
+        },
+      })
+      -- vim.cmd([[colorscheme visual_studio_code]])
+    end,
   },
   {
     "windwp/nvim-autopairs",
@@ -432,7 +435,14 @@ require("lazy").setup({
 
       sources = {
         -- default = { 'lsp', 'path', 'snippets', 'buffer' },
-        default = { "lsp", "path", "buffer" },
+        default = {"lazydev", "lsp", "path", "buffer" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
       },
 
       fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -475,6 +485,30 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+
+    end
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function()
+
+    end
+  },
+  {
+
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -537,7 +571,7 @@ require("lazy").setup({
         },
       })
 
-      lspconfig("roslyn", { 
+      lspconfig("roslyn", {
         on_attach = function()
           print("roslyn lsp attached")
         end,
@@ -546,13 +580,13 @@ require("lazy").setup({
           ["csharp|formatting"] = {
             dotnet_organize_imports_on_format = false,
           },
-        ["csharp|inlay_hints"] = {
-          csharp_enable_inlay_hints_for_implicit_object_creation = true,
-          csharp_enable_inlay_hints_for_implicit_variable_types = true,
-        },
-        ["csharp|code_lens"] = {
-          dotnet_enable_references_code_lens = true,
-        },
+          ["csharp|inlay_hints"] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+          },
+          ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+          },
         },
       })
 
@@ -585,17 +619,18 @@ require("lazy").setup({
       lspconfig("cssls", { capabilities = capabilities })
       lspconfig("glsl_analyzer", { capabilities = capabilities })
       lspconfig("rust_analyzer", { capabilities = capabilities })
-    lspconfig("asm_lsp", { capabilities = capabilities })
-  end
+      lspconfig("asm_lsp", { capabilities = capabilities })
+    end
   },
-  {
-    "seblyng/roslyn.nvim",
-    ft = { "cs" },
-    opts = {
-      -- your configuration comes here; leave empty for default settings
-      silent = false,
-    },
-  },
+  -- Not needed right now, causes double code suggestion
+  -- {
+  --   "seblyng/roslyn.nvim",
+  --   ft = { "cs" },
+  --   opts = {
+  --     -- your configuration comes here; leave empty for default settings
+  --     silent = false,
+  --   },
+  -- },
   {
     "andweeb/presence.nvim",
     config = function()
@@ -623,6 +658,43 @@ require("lazy").setup({
         line_number_text    = "Line %s out of %s",  -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
       })
     end
+  },
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          lua        = { "stylua" },
+          -- Conform will run multiple formatters sequentially
+          python     = { "black" },
+          -- You can customize some of the format options for the filetype (:help conform.format)
+          rust       = { "rustfmt", lsp_format = "fallback" },
+          -- Conform will run the first available formatter
+          javascript = { "prettier", stop_after_first = true },
+          c          = { "clang_format" },
+          cpp        = { "clang_format" },
+        },
+      })
+    end
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" }, -- Lazy-load on file open
+    config = function()
+      require("lint").linters_by_ft = {
+        python = { "flake8", "pylint" },
+        javascript = { "eslint_d" },
+        sh = { "shellcheck" },
+        -- Add more filetypes as needed
+      }
+
+      -- Auto-trigger linting on save
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+    end,
   },
   {
     'numToStr/Comment.nvim',
@@ -654,10 +726,4 @@ require("lazy").setup({
       exclude = {}, -- exclude these filetypes
     },
   },
-  {
-    "lommix/godot.nvim",
-    lazy = true,
-    cmd = { "GodotDebug", "GodotBreakAtCursor", "GodotStep", "GodotQuit", "GodotContinue" },
-  },
-
 })
