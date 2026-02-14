@@ -15,11 +15,75 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+-- COLOR THEMES
 require("lazy").setup({
-  {"rebelot/kanagawa.nvim", 
+  {
+    "rebelot/kanagawa.nvim",
     config = function()
-      vim.cmd.colorscheme("kanagawa-wave")
+      -- vim.cmd.colorscheme("kanagawa-wave")
     end,
+  },
+  {
+    'aikhe/fleur.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- vim.cmd("colorscheme fleur")
+    end,
+  },
+
+{
+	"ellisonleao/gruvbox.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		-- Default options:
+		require("gruvbox").setup({
+				})
+		-- vim.cmd("colorscheme gruvbox")
+	end
+},
+{
+	"askfiy/visual_studio_code",
+	priority = 100,
+	config = function()
+		require("visual_studio_code").setup({
+			mode = "dark",
+			-- Whether to load all color schemes
+			preset = true,
+			-- Whether to enable background transparency
+			transparent = true,
+			expands = {
+				hop = true,
+				dbui = true,
+				lazy = true,
+				aerial = true,
+				null_ls = true,
+				nvim_cmp = true,
+				gitsigns = true,
+				which_key = true,
+				nvim_tree = false,
+				lspconfig = true,
+				telescope = true,
+				bufferline = true,
+				nvim_navic = true,
+				nvim_notify = true,
+				vim_illuminate = true,
+				nvim_treesitter = true,
+				nvim_ts_rainbow = true,
+				nvim_scrollview = true,
+				nvim_ts_rainbow2 = true,
+				indent_blankline = true,
+				vim_visual_multi = true,
+			},
+			hooks = {
+				before = function(conf, colors, utils) end,
+				after = function(conf, colors, utils) end,
+			},
+		})
+		vim.cmd([[colorscheme visual_studio_code]])
+	end,
   },
   {
     "windwp/nvim-autopairs",
@@ -50,19 +114,19 @@ require("lazy").setup({
       })
 
       local select = require("nvim-treesitter-textobjects.select").select_textobject
-      vim.keymap.set({"x", "o"}, "af", function()
+      vim.keymap.set({ "x", "o" }, "af", function()
         select("@function.outer", "textobjects")
       end)
-      vim.keymap.set({"x", "o"}, "if", function()
+      vim.keymap.set({ "x", "o" }, "if", function()
         select("@function.inner", "textobjects")
       end)
-      vim.keymap.set({"x", "o"}, "ac", function()
+      vim.keymap.set({ "x", "o" }, "ac", function()
         select("@class.outer", "textobjects")
       end)
-      vim.keymap.set({"x", "o"}, "ic", function()
+      vim.keymap.set({ "x", "o" }, "ic", function()
         select("@class.inner", "textobjects")
-      end) 
-      vim.keymap.set({"x", "o"}, "as", function()
+      end)
+      vim.keymap.set({ "x", "o" }, "as", function()
         select("@local.scope", "locals")
       end)
     end,
@@ -98,7 +162,7 @@ require("lazy").setup({
         },
 
         indent = { enable = true },
-        incremental_selection = { 
+        incremental_selection = {
           enable = true,
           keymaps = {
             init_selection = "<leader>ss",
@@ -174,12 +238,11 @@ require("lazy").setup({
           end
         end
       end
-
     end,
     keys = {
       -- Smart toggle (creates new if in terminal, toggles if not)
       { "<A-h>",      "<cmd>lua smart_toggle_term('horizontal', 5)<cr>", desc = "Smart Horizontal Terminal" },
-      { "<A-v>",      "<cmd>lua smart_toggle_term('vertical', 25)<cr>",   desc = "Smart Vertical Terminal" },
+      { "<A-v>",      "<cmd>lua smart_toggle_term('vertical', 25)<cr>",  desc = "Smart Vertical Terminal" },
       { "<A-f>",      "<cmd>lua smart_toggle_term('float')<cr>",         desc = "Smart Float Terminal" },
 
       -- Toggle specific terminals
@@ -232,7 +295,7 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" }, -- Optional icon support
-    event = "VeryLazy",                              -- Loads after UI starts (better performance)
+    event = "VeryLazy",                               -- Loads after UI starts (better performance)
     opts = function()
       -- local diagnostics = {
       -- 	"diagnostics",
@@ -311,17 +374,17 @@ require("lazy").setup({
     event = "BufReadPre",
     config = function()
       require("colorizer").setup({ "*" }, {
-        RGB = true,        -- #RGB hex codes
-        RRGGBB = true,     -- #RRGGBB hex codes
-        names = false,     -- "Name" codes like Blue
-        RRGGBBAA = true,   -- #RRGGBBAA hex codes
-        rgb_fn = true,     -- CSS rgb() and rgba() functions
-        hsl_fn = true,     -- CSS hsl() and hsla() functions
-        css = true,        -- Enable all CSS features
-        css_fn = true,     -- Enable all CSS *functions*
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = false, -- "Name" codes like Blue
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features
+        css_fn = true, -- Enable all CSS *functions*
         -- Additional options:
         mode = "background", -- Set display mode (foreground/background)
-        virtualtext = "■",  -- Show color preview in virtualtext
+        virtualtext = "■", -- Show color preview in virtualtext
       })
     end
   },
@@ -379,7 +442,14 @@ require("lazy").setup({
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
-    config = true,
+    config = function()
+      require("mason").setup({
+        registries = {
+          'github:Crashdummyy/mason-registry',
+          'github:mason-org/mason-registry',
+        },
+      })
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -394,10 +464,10 @@ require("lazy").setup({
           "cmake",
           "html",
           "cssls",
-          "omnisharp",
           "jdtls",
           "eslint",
           "glsl_analyzer",
+          "rust_analyzer",
           "ts_ls"
         },
         automatic_installation = true,
@@ -467,6 +537,25 @@ require("lazy").setup({
         },
       })
 
+      lspconfig("roslyn", { 
+        on_attach = function()
+          print("roslyn lsp attached")
+        end,
+        { capabilities = capabilities },
+        settings = {
+          ["csharp|formatting"] = {
+            dotnet_organize_imports_on_format = false,
+          },
+        ["csharp|inlay_hints"] = {
+          csharp_enable_inlay_hints_for_implicit_object_creation = true,
+          csharp_enable_inlay_hints_for_implicit_variable_types = true,
+        },
+        ["csharp|code_lens"] = {
+          dotnet_enable_references_code_lens = true,
+        },
+        },
+      })
+
       lspconfig("emmet_ls", {
         capabilities = capabilities,
         filetypes = {
@@ -488,7 +577,6 @@ require("lazy").setup({
       })
 
       lspconfig("jsonls", { capabilities = capabilities })
-      lspconfig("omnisharp", { capabilities = capabilities })
       lspconfig("eslint", { capabilities = capabilities })
       lspconfig("marksman", { capabilities = capabilities })
       lspconfig("ts_ls", { capabilities = capabilities })
@@ -496,12 +584,21 @@ require("lazy").setup({
       lspconfig("html", { capabilities = capabilities })
       lspconfig("cssls", { capabilities = capabilities })
       lspconfig("glsl_analyzer", { capabilities = capabilities })
-      lspconfig("asm_lsp", { capabilities = capabilities })
-    end
+      lspconfig("rust_analyzer", { capabilities = capabilities })
+    lspconfig("asm_lsp", { capabilities = capabilities })
+  end
+  },
+  {
+    "seblyng/roslyn.nvim",
+    ft = { "cs" },
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+      silent = false,
+    },
   },
   {
     "andweeb/presence.nvim",
-    config = function ()
+    config = function()
       require("presence").setup({
         -- General options
         auto_update         = true,                       -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
@@ -517,13 +614,13 @@ require("lazy").setup({
         show_time           = true,                       -- Show the timer
 
         -- Rich Presence text options
-        editing_text        = "Editing %s",               -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
-        file_explorer_text  = "Browsing %s",              -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
-        git_commit_text     = "Committing changes",       -- Format string rendered when committing changes in git (either string or function(filename: string): string)
-        plugin_manager_text = "Managing plugins",         -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
-        reading_text        = "Reading %s",               -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
-        workspace_text      = "Working on %s",            -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
-        line_number_text    = "Line %s out of %s",        -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
+        editing_text        = "Editing %s",         -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
+        file_explorer_text  = "Browsing %s",        -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
+        git_commit_text     = "Committing changes", -- Format string rendered when committing changes in git (either string or function(filename: string): string)
+        plugin_manager_text = "Managing plugins",   -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
+        reading_text        = "Reading %s",         -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
+        workspace_text      = "Working on %s",      -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
+        line_number_text    = "Line %s out of %s",  -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
       })
     end
   },
@@ -541,14 +638,14 @@ require("lazy").setup({
     opts = {
       -- Default configuration
       dimming = {
-        alpha = 0.25, -- Amount of dimming (0-1 where 1 is fully opaque)
+        alpha = 0.25,                    -- Amount of dimming (0-1 where 1 is fully opaque)
         color = { "Normal", "#ffffff" }, -- Dimming color
-        term_bg = "#000000", -- Terminal background for dimming
-        inactive = false, -- Dim inactive windows
+        term_bg = "#000000",             -- Terminal background for dimming
+        inactive = false,                -- Dim inactive windows
       },
-      context = 19,       -- Number of lines to keep above/below visible
-      treesitter = true,  -- Use treesitter when available
-      expand = {          -- Filetypes where Twilight expands
+      context = 19,                      -- Number of lines to keep above/below visible
+      treesitter = true,                 -- Use treesitter when available
+      expand = {                         -- Filetypes where Twilight expands
         "function",
         "method",
         "table",

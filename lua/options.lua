@@ -31,7 +31,7 @@ local options = {
 	tabstop = 2, --visual width of tab
 
 	foldmethod = "expr",
-	-- foldlevel = 99, --disable folding, lower #s enable
+	foldlevel = 99, --disable folding, lower #s enable
 	foldexpr = "nvim_treesitter#foldexpr()",
 
 	termguicolors = true,

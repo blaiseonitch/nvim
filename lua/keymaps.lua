@@ -91,11 +91,11 @@ K("n", "<leader>fu", function()
 end, { desc = "Word under cursor (Project)" })
 
 
--- K("n", "<leader>fm", function()
--- 	vim.lsp.buf.format({ async = true })
--- end, { buffer = bufnr, desc = "Format file" })
+K("n", "<leader>fm", function()
+	vim.lsp.buf.format({ async = true })
+end, { buffer = bufnr, desc = "Format file" })
 
-K("n", "<leader>fm", "=G", opts)
+-- K("n", "<leader>fm", "=G", opts)
 
 K("n", "<leader>d", function() -- Display diagnostics (if any errors)
 	vim.diagnostic.open_float({
