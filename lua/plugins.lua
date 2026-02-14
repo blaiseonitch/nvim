@@ -635,7 +635,6 @@ require("lazy").setup({
     "andweeb/presence.nvim",
     config = function()
       require("presence").setup({
-        -- General options
         auto_update         = true,                       -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
         neovim_image_text   = "The One True Text Editor", -- Text displayed when hovered over the Neovim image
         main_image          = "neovim",                   -- Main image display (either "neovim" or "file")
@@ -665,11 +664,8 @@ require("lazy").setup({
       require("conform").setup({
         formatters_by_ft = {
           lua        = { "stylua" },
-          -- Conform will run multiple formatters sequentially
           python     = { "black" },
-          -- You can customize some of the format options for the filetype (:help conform.format)
           rust       = { "rustfmt", lsp_format = "fallback" },
-          -- Conform will run the first available formatter
           javascript = { "prettier", stop_after_first = true },
           c          = { "clang_format" },
           cpp        = { "clang_format" },
