@@ -1,5 +1,11 @@
+vim.g.mapleader = " "
 local options = {
-	laststatus = 3,
+  splitbelow = true,
+  splitright = true,
+  expandtab = true,
+  virtualedit = "block",
+  inccommand = "split",
+  laststatus = 3,
 	ruler = false,            --disable extra numbering
 	showmode = true,         --not needed due to lualine
 	showcmd = false,
@@ -25,7 +31,7 @@ local options = {
 	tabstop = 2, --visual width of tab
 
 	foldmethod = "expr",
-	foldlevel = 99, --disable folding, lower #s enable
+	-- foldlevel = 99, --disable folding, lower #s enable
 	foldexpr = "nvim_treesitter#foldexpr()",
 
 	termguicolors = true,
@@ -49,4 +55,24 @@ vim.diagnostic.config({
 	signs = false,
 	virtual_text = true, -- Show errors in code
 	underline = false,  -- underline on error lines
+})
+
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd('TextYankPost', {
+	desc = 'Highlight when yanking (copying) text',
+	group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+-- restore cursor pos on file open
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		local line = vim.fn.line("'\"")
+		if line > 1 and line <= vim.fn.line("$") then
+			vim.cmd("normal! g'\"")
+		end
+	end,
 })
