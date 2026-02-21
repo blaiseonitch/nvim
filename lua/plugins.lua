@@ -326,6 +326,7 @@ require("lazy").setup({
 
       return {
         options = {
+          theme =  'gruvbox',
           icons_enabled = true,
           -- theme = "tomorrow_night",
           -- theme = "16color",
@@ -341,21 +342,25 @@ require("lazy").setup({
             "NvimTree",
             "toggleterm",
           },
+          globalstatus = false,
           always_divide_middle = true,
         },
         sections = {
-          lualine_a = { { "branch", icon = "" } },
           lualine_b = { "mode" },
           -- lualine_c = { diagnostics },
+          lualine_a = { { "branch", icon = "" } },
           lualine_c = { { "filename", path = 0, file_status = true } },
+          -- lualine_m = {"encoding"},
           lualine_x = {
             -- { "diff",
             --   colored = true,
             --   symbols = { added = " ", modified = " ", removed = " " }
             -- },
-            "fileformat",
-            "filetype",
-            "encoding"
+            -- "lsp_status",
+            "filesize",
+            "encoding",
+            -- "fileformat",
+            "filetype"
           },
           lualine_y = { progress },
           -- lualine_z = { "location" },
@@ -366,15 +371,15 @@ require("lazy").setup({
             -- end
           }
         },
-        extensions = { "nvim-tree" },
+        -- extensions = { "nvim-tree" },
       }
     end,
-    config = function(_, opts)
-      require("lualine").setup(opts)
-      -- Optional transparency fix (works better than per-component overrides)
-      vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
-      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
-    end
+    -- config = function(_, opts)
+    --   require("lualine").setup(opts)
+    --   -- Optional transparency fix (works better than per-component overrides)
+    --   vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+    --   vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+    -- end
   },
   {
     "norcalli/nvim-colorizer.lua", -- Note: Correct repo is "norcalli/nvim-colorizer.lua"
