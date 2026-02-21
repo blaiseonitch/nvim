@@ -629,6 +629,8 @@ require("lazy").setup({
       lspconfig("glsl_analyzer", { capabilities = capabilities })
       lspconfig("rust_analyzer", { capabilities = capabilities })
       lspconfig("asm_lsp", { capabilities = capabilities })
+      lspconfig("golsp", { capabilities = capabilities})
+      lspconfig("jinja-lsp", {capabilities = capabilities})
     end
   },
   -- Not needed right now, causes double code suggestion
