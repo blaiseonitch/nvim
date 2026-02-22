@@ -326,7 +326,7 @@ require("lazy").setup({
 
       return {
         options = {
-          theme =  'gruvbox',
+          theme = 'gruvbox',
           icons_enabled = true,
           -- theme = "tomorrow_night",
           -- theme = "16color",
@@ -619,6 +619,16 @@ require("lazy").setup({
         },
       })
 
+      lspconfig("arduino-language-server", {
+        cmd = {
+          "arduino-language-server",
+          "-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
+          "-fqbn", "arduino:uvr:uno",
+          "-cli", "/usr/bin/arduino-cli",
+          "-clangd", "/usr/bin/clangd"
+        }
+      })
+
       lspconfig("jsonls", { capabilities = capabilities })
       lspconfig("eslint", { capabilities = capabilities })
       lspconfig("marksman", { capabilities = capabilities })
@@ -629,8 +639,9 @@ require("lazy").setup({
       lspconfig("glsl_analyzer", { capabilities = capabilities })
       lspconfig("rust_analyzer", { capabilities = capabilities })
       lspconfig("asm_lsp", { capabilities = capabilities })
-      lspconfig("golsp", { capabilities = capabilities})
-      lspconfig("jinja-lsp", {capabilities = capabilities})
+      lspconfig("golsp", { capabilities = capabilities })
+      lspconfig("jinja-lsp", { capabilities = capabilities })
+      -- lspconfig("arduino-language-server", { capabilities = capabilities })
     end
   },
   -- Not needed right now, causes double code suggestion
@@ -775,7 +786,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       signs = true,
-      sign_priority = 8,                         -- sign priority
+      sign_priority = 8, -- sign priority
       keywords = {
         FIX = {
           icon = " ", -- icon used for the sign, and in search results
